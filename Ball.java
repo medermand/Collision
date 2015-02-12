@@ -2,8 +2,6 @@
 import java.awt.*;
 import java.util.*;
 
-
-
 public class Ball {
 	
 	//properties
@@ -16,6 +14,7 @@ public class Ball {
 	private Vector velocity;
 	private Color ballColor;
 	private boolean ballTrack;
+	private boolean isGravity;
 	private boolean velDirection;
 	private Color[] colors = {Color.MAGENTA,Color.BLUE,Color.GREEN,Color.GRAY,Color.BLACK,Color.ORANGE,Color.RED,Color.PINK};
 	//constructors
@@ -200,9 +199,8 @@ public class Ball {
         
         if(velDirection)
         {
-        
-        	Vector vel = getVelocity();
-            Ruler.drawArrow(getLocation(),Vector.product(5, vel) , g, Color.BLACK);
+        	g.setColor(Color.BLACK);
+            getVelocity().printVector(getLocation(),g);
         }
         
         if (ballTrack)
