@@ -22,7 +22,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 
-
 public class FunctionPanel extends JPanel implements ChangeListener{
 
 	//properties
