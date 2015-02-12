@@ -1,9 +1,7 @@
 
-
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-
 
 
 import javax.swing.*;
@@ -24,7 +22,7 @@ public class BallPanel extends JPanel{
 		balls = new ArrayList<Ball>();
 		collision = new Collision(balls,cor);
 		collision.setSize(this);
-		timer = new Timer(50, new TimerListener());
+		timer = new Timer(10, new TimerListener());
 		
 		//panel properties
 		MyMouseListener mouseListener = new MyMouseListener();
