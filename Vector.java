@@ -1,5 +1,6 @@
 
 
+
 /*
  *Vector Class defines a object that can represent a physical
 magnitude with direction. 
@@ -8,14 +9,13 @@ magnitude with direction.
 	import java.awt.*;
 public class Vector {
 	
-	public final int MAPSIZE = 20; 
-		
 	public double x;  //projection of vector on x
 	public double y;		//projection of vector on y
 	public double r;  //length of vector
 	public double teta;     //angle of vector to x axis 
 
 	public final double pi = Math.PI ; 
+	final int BOX_LENGTH = 9;
 	//arrows' wings' angle
 	final double WING_ANGLE = Math.PI * 30 / 180;
 
@@ -46,6 +46,9 @@ public class Vector {
 		return this.teta;
 	}
 	
+	public void setTeta( double teta){
+		this.teta = teta;
+	}
 	/*Vector Class can work with both Cartesian coordinate 
 	system and Polar coordinate systems in two dimensions because 
 	it has r and teta variables as well as x and y. 
@@ -62,7 +65,6 @@ public class Vector {
 				this.teta = 2*pi - Math.atan(-y/x);
 		}
 		if(y/x>0){
-		
 			if(y<0)
 				this.teta = pi + Math.atan(y/x);
 			else
@@ -86,7 +88,6 @@ public class Vector {
 			
 	}
 	public void setPolar(double r,double teta){
-		//teta = (teta/180)*pi;
 		this.r = r;
 		this.teta = teta;
 		this.x = r*Math.cos(teta);
@@ -120,13 +121,8 @@ public class Vector {
     } //also vectorSubtract(A,B).getR() will return distance between A and B
     public void printVector(Vector location, Graphics g){
     	
-    	//calculating length
-    	double sAr=8;  //smallest length units of pixels
-    	double bAr=30; //biggest length units of pixels
     	
-    	//double length =( (bAr*(this.getR()-Simulator.smallest)) + (sAr * (Simulator.biggest-this.getR())))/(Simulator.biggest-Simulator.smallest) ;
-    	double length = 2*Math.log  (this.getR()/10000) ;
-    	//double length = this.getR();
+    	double length = 10 ;//temporary
     	//Body of Arrow
     	int x1 = (int)( location.getX() + length * 0.5 * Math.cos(this.getTeta())  );
     	int x2 = (int)( location.getX() - length * 0.5 * Math.cos(this.getTeta())  );
@@ -135,7 +131,7 @@ public class Vector {
     	g.drawLine(x1,y1,x2,y2);
     	
     	//Wing of Arrow
-    	double wingLength = length/3;
+    	double wingLength = 5;
 	    //right
 	    int x3 = (int)( x1 - wingLength * Math.cos( this.getTeta()+WING_ANGLE )  );
 	    int y3 = (int)( y1 - wingLength * Math.sin( this.getTeta()+WING_ANGLE )  );
@@ -144,14 +140,5 @@ public class Vector {
 	    int x4 = (int)( x1 - wingLength * Math.cos( this.getTeta()-WING_ANGLE )  );
 	    int y4 = (int)( y1 - wingLength * Math.sin( this.getTeta()-WING_ANGLE )  );
 	   	g.drawLine(x1,y1,x4,y4);
-    }
-    public String toString(){
-    	
-    	String str = "" ;
-    	str += "x = " + getX() + "\n";
-    	str += "y = " + getY() + "\n";
-    	str += "r = " + getR() + "\n";
-    	str += "teta = " + getTeta()*180/Math.PI ;	
-    	return str;
     }
 }
