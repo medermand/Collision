@@ -3,7 +3,10 @@ import java.awt.*;
 import java.util.*;
 
 public class Ball {
-	
+
+	//New comments are added for the learning purposes.
+
+
 	//properties
 	private double mass;
 	private Vector location;
